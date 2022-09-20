@@ -7,6 +7,7 @@ https://learn.microsoft.com/ko-kr/windows/wsl/install <br>
 <br>
 WSL에서 이 프로젝트를 실행하기위해선 아래 package들을 설치해야합니다
 ```bash
+$ sudo apt-get update
 $ sudo apt-get install autotools-dev
 $ sudo apt-get install automake
 $ sudo apt-get install libtool
