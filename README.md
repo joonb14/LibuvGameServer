@@ -45,8 +45,8 @@ $ ./MetaGameServer
 ![serverStart](https://user-images.githubusercontent.com/30307587/156481341-81e649a5-805f-4e9f-a229-56c62c0ef514.png)
 
 Windows에서 Unity Client를 실행해야합니다.
-아래 프로젝트에서 Client 폴더를 Unity에서 엽니다(꼭 devel-jb 브랜치를 받아야합니다)
-http://192.168.155.24:32080/mv2/mv2-2/csharpgameserver/-/tree/devel-jb
+아래 프로젝트에서 Client 폴더를 Unity에서 엽니다
+https://github.com/joonb14/LibuvGameServerClients
 NetworkManager.cs 파일을 더블클릭해서 아래 부분을 수정합니다.
 ![NetworkManager](https://user-images.githubusercontent.com/30307587/158985763-5606ca04-cbce-4c47-8a1c-4e32d9b22c7a.png)
 개인 Linux 개발환경의 수동 ip와 포트 7000번으로 수정합니다.
