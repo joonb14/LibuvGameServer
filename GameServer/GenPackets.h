@@ -14,6 +14,8 @@ enum class PacketID
 	S_PLAYERLIST = 1003, 
 	C_MOVE = 1004, 
 	S_BROADCASTMOVE = 1005, 
+    C_ANIMATION = 1006,
+    S_BROADCASTANIMATION = 1007,
 };
 
 class IPacket
@@ -24,6 +26,178 @@ public:
 public:
 	void read(BYTE* data);
 	uint16 write(BYTE* buffer);
+};
+
+class S_BROADCASTLEAVEGAME : public IPacket
+{
+public:
+	int32 _playerId;
+
+public:
+	S_BROADCASTLEAVEGAME(int32 playerId) 
+	{
+		protocol = (uint16)PacketID::S_BROADCASTLEAVEGAME;
+		_playerId = playerId;
+	}
+
+	~S_BROADCASTLEAVEGAME()
+	{
+		// LOG_INFO("~S_BROADCASTLEAVEGAME()");
+	}
+
+    void read(BYTE* data)
+    {
+        uint16 count = 0;
+        count += sizeof(uint16);
+        count += sizeof(uint16);
+        _playerId = *reinterpret_cast<int32*>(data + count);
+		// count += sizeof(int32);
+    }
+
+    uint16 write(BYTE* buffer)
+    {
+        uint16 count = 0;
+
+        count += sizeof(uint16);
+		memcpy(buffer + count, &protocol, sizeof(uint16));
+		count += sizeof(uint16);
+        memcpy(buffer + count, &_playerId, sizeof(int32));
+        count += sizeof(int32);
+
+        memcpy(buffer, &count, sizeof(uint16));
+
+        return count;
+    }
+};
+
+class S_BROADCASTANIMATION : public IPacket
+{
+public:
+	int32 _playerId;
+	int32 _animationId;
+
+public:
+	~S_BROADCASTANIMATION()
+	{
+		// LOG_INFO("~S_BROADCASTANIMATION()");
+	}
+
+	S_BROADCASTANIMATION(int32_t playerId, int32 animationId) 
+	{
+		protocol = (uint16)PacketID::S_BROADCASTANIMATION;
+		_playerId = playerId;
+		_animationId = animationId;
+	}
+
+    void read(BYTE* data)
+    {
+        uint16 count = 0;
+        count += sizeof(uint16);
+        count += sizeof(uint16);
+        _playerId = *reinterpret_cast<int32*>(data + count);
+		count += sizeof(int32);
+        _animationId = *reinterpret_cast<int32*>(data + count);
+		// count += sizeof(int32);
+    }
+
+    uint16 write(BYTE* buffer)
+    {
+        uint16 count = 0;
+
+        count += sizeof(uint16);
+		memcpy(buffer + count, &protocol, sizeof(uint16));
+		count += sizeof(uint16);
+        memcpy(buffer + count, &_playerId, sizeof(int32));
+        count += sizeof(int32);
+        memcpy(buffer + count, &_animationId, sizeof(int32));
+        count += sizeof(int32);
+
+        memcpy(buffer, &count, sizeof(uint16));
+
+        return count;
+    }
+};
+
+class C_ANIMATION : public IPacket
+{
+public:
+	int32 _animationId;
+
+public:
+	~C_ANIMATION()
+	{
+		// LOG_INFO("~C_ANIMATION()");
+	}
+
+	C_ANIMATION() 
+	{
+		protocol = (uint16)PacketID::C_ANIMATION;
+	}
+
+    void read(BYTE* data)
+    {
+        uint16 count = 0;
+        count += sizeof(uint16);
+        count += sizeof(uint16);
+        _animationId = *reinterpret_cast<int32*>(data + count);
+		// count += sizeof(int32);
+    }
+
+    uint16 write(BYTE* buffer)
+    {
+        uint16 count = 0;
+
+        count += sizeof(uint16);
+		memcpy(buffer + count, &protocol, sizeof(uint16));
+		count += sizeof(uint16);
+        memcpy(buffer + count, &_animationId, sizeof(int32));
+        count += sizeof(int32);
+
+        memcpy(buffer, &count, sizeof(uint16));
+
+        return count;
+    }
+};
+
+class C_LEAVEGAME : public IPacket
+{
+public:
+	int32 _playerId;
+
+public:
+	~C_LEAVEGAME()
+	{
+		// LOG_INFO("~C_LEAVEGAME()");
+	}
+
+	C_LEAVEGAME() 
+	{
+		protocol = (uint16)PacketID::C_LEAVEGAME;
+	}
+
+    void read(BYTE* data)
+    {
+        uint16 count = 0;
+        count += sizeof(uint16);
+        count += sizeof(uint16);
+        _playerId = *reinterpret_cast<int32*>(data + count);
+		// count += sizeof(int32);
+    }
+
+    uint16 write(BYTE* buffer)
+    {
+        uint16 count = 0;
+
+        count += sizeof(uint16);
+		memcpy(buffer + count, &protocol, sizeof(uint16));
+		count += sizeof(uint16);
+        memcpy(buffer + count, &_playerId, sizeof(int32));
+        count += sizeof(int32);
+
+        memcpy(buffer, &count, sizeof(uint16));
+
+        return count;
+    }
 };
 
 class C_MOVE : public IPacket

@@ -9,8 +9,10 @@ extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
 // Custom Handlers
 bool handleINVALID(Session* session, BYTE* buffer, int32 len);
-// bool Handle_C_LEAVEGAME(PacketSession* session, C_LEAVEGAME& pkt);
+bool handleC_LEAVEGAME(Session* session, C_LEAVEGAME& pkt);
 bool handleC_MOVE(Session* session, C_MOVE& pkt);
+bool handleC_ANIMATION(Session* session, C_ANIMATION& pkt);
+
 
 class PacketHandler
 {
@@ -19,8 +21,9 @@ public:
 	{
 		for (uint16 i = 0; i < UINT16_MAX; i++)
 			GPacketHandler[i] = handleINVALID;
-		// GPacketHandler[PacketID::C_LEAVEGAME] = [](Session& session, BYTE* buffer, int32 len) { return HandlePacket<Protocol::C_LEAVEGAME>(Handle_C_LEAVEGAME, session, buffer, len); };
+		GPacketHandler[(uint16)PacketID::C_LEAVEGAME] = [](Session* session, BYTE* buffer, int32 len) { return handlePacket<C_LEAVEGAME>(handleC_LEAVEGAME, session, buffer, len); };
 		GPacketHandler[(uint16)PacketID::C_MOVE] = [](Session* session, BYTE* buffer, int32 len) { return handlePacket<C_MOVE>(handleC_MOVE, session, buffer, len); };
+		GPacketHandler[(uint16)PacketID::C_ANIMATION] = [](Session* session, BYTE* buffer, int32 len) { return handlePacket<C_ANIMATION>(handleC_ANIMATION, session, buffer, len); };
 	}
 
 	static bool handlePacket(Session* session, BYTE* buffer, int32 len)
