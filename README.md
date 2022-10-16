@@ -50,22 +50,3 @@ https://github.com/joonb14/LibuvGameServerClients<br>
 Scene에 SampleScene을 실행합니다<br>
 
 ![Demo Video Link](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1148af25-b915-4669-a41d-98377a7cd693/%EB%85%B9%ED%99%94_2022_03_17_16_06_26_338.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220318%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220318T102544Z&X-Amz-Expires=86400&X-Amz-Signature=fa3405ccfbea04c6caf63e40dfa48bddb61d3c056a121acc26f30777e8a4fbaf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EB%2585%25B9%25ED%2599%2594_2022_03_17_16_06_26_338.mp4%22&x-id=GetObject)
-
-# TODO List
-
-- [x]  필요없는 파일들 함수들 덜어내기
-- [x]  Coding Convention에 맞게 수정
-- [x]  C 파일들 C++로 수정
-- [x]  여러 .cpp 파일을 하나의 실행 파일로 make할 수 있는 Makefile 생성
-- [x]  LibuvCore로 uv 함수들 main function에서 꺼내기
-- [x]  현재 GameSession의 기능은 ClientPacketHandler로 이동? -> 보류
-- [x]  GameSession과 Session은 접속중인 Client와 Server의 정보를 갖고 있도록 변경 -> Service가 Server의 정보를, Session이 Client의 정보를 저장
-- [x]  Session(GameSession)을 ServerService에서 갖고있도록 수정
-- [x]  gdb 디버거 사용법 조사, static code analysis(scan-build) 사용하도록 Makefile 수정
-- [x]  memory leak 해결 -> scan-build로 static analysis, top 명령어를 이용해 Memory 확인(track)하는 memwatch.sh 작성
-- [x]  Unity C# Client에서 MetaGameServer와 Packet을 주고 받는 기본 기능 구현
-- [ ]  다중 Client 환경 Test용 DummyClient 구현
-- [ ]  현재 BYTE* 에 data를 집어넣어 uv_write에 요청보내고 바로 BYTE* 를 delete하는데 추후에 이 방식은 문제가 생길 것으로 예상되므로 변경
-- [ ]  EM → Thread 여러개 사용할 방법 조사
-- [ ]  현재 프로젝트는 ServerService 자체를 하나의 Room 처럼 보고 동작하는데 
-- [ ]  uv_read_start가 Async IO가 맞는지 조사
