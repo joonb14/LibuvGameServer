@@ -48,5 +48,3 @@ Windows에서 Unity Client를 실행해야합니다.<br>
 아래 프로젝트에서 Client 폴더를 Unity에서 엽니다<br>
 https://github.com/joonb14/LibuvGameServerClients<br>
 Scene에 SampleScene을 실행합니다<br>
-
-![Demo Video Link](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1148af25-b915-4669-a41d-98377a7cd693/%EB%85%B9%ED%99%94_2022_03_17_16_06_26_338.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220318%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220318T102544Z&X-Amz-Expires=86400&X-Amz-Signature=fa3405ccfbea04c6caf63e40dfa48bddb61d3c056a121acc26f30777e8a4fbaf&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25EB%2585%25B9%25ED%2599%2594_2022_03_17_16_06_26_338.mp4%22&x-id=GetObject)
